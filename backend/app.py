@@ -18,6 +18,8 @@ def create_app():
     migrate.init_app(app, db)
     jwt.init_app(app)
     from models import User, Book, Review, Category, BookCategory
+    from routes.auth import auth_bp
+    app.register_blueprint(auth_bp)
 
     @app.route("/")
     def home():
